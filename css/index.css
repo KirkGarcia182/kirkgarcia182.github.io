@@ -1,7 +1,133 @@
+:root{
+    /*
+        Primary is used for the body and
+        acts like the main background and color
+        for the web page
+    */
+    --primary-bg-color: rgb(21,21,21);
+    --primary-color: silver;
+
+    /*
+        Secondary is used for modal headers,
+        navigation bars, sidebars, footers,
+        buttons and etc
+    */
+    --secondary-bg-color: hotpink;
+    --secondary-color: black;
+
+    /*
+        Tertiary is used for elements that are on
+        top of a Secondary Elements and is used to blend
+        well with the Secondary Elements
+    */
+    --tertiary-bg-color: rgba(0,0,0,0.5);
+    --tertiary-color: silver;
+    --tertiary-hover-bg-color: rgba(0,0,0,0.3);
+    --tertiary-hover-color: black;
+
+    --font-family: Verdana;
+    --font-size: 15px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
 html, body{
     width: 100%;
     height: 100%;
-    margin: 0px;
-    background-color: rgb(21,21,21);
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    background-color: var(--primary-bg-color);
+    color: var(--primary-color);
 }
 
+.pageheader{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 16px;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-color);
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+.pageheader .logo, .pageheader .logo img{
+    height: 84px;
+    width: 84px;
+}
+.pageheader .logo img{
+    border-radius: 10px;
+}
+
+.pageheader .name{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 8px 16px;
+    text-align: center;
+}
+
+.menus{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: 50px;
+    justify-content: center;
+}
+
+.menus div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    flex-grow: 1;
+}
+
+.menus .item1{background-color: #fec107;}
+.menus .item2{background-color: #87ceec;}
+.menus .item3{background-color: #8cc34b;}
+.menus .item4{background-color: #2196f3;}
+.menus .item5{background-color: #cddc39;}
+.menus .item6{background-color: #ff9801;}
+
+.body{
+    display: none;
+    height: calc(100% - 150px);
+    width: 100%;
+    overflow-y: auto;
+}
+
+.danger{ background-color: #f54337; color: white; }
+.danger:hover { background-color: #ffdddc; color: black; }
+
+.warning{ background-color: #ffeb3c; color: black; }
+.warning:hover{ background-color: #ffffcd; color: black; }
+
+.success{ background-color: #4cb050; color: white; }
+.success:hover{ background-color: #ddffde; color: black; }
+
+.info{ background-color: #2196f3; color: white;}
+.info:hover{ background-color: #ddffff; color: black;}
+
+/*@media only screen and (max-width: 360px) {
+    .menus {
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 150px 150px;
+    }
+}*/
+
+@media only screen and (max-width: 599px) {
+    .menus {
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        grid-template-rows: repeat(2, 50px);
+    }
+    .pageheader .name{
+        font-size: 20px;
+    }
+    .body{
+        height: calc(100% - 200px);
+    }
+}

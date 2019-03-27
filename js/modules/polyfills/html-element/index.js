@@ -2,7 +2,7 @@ import * as is from '../../utilities/is/index.js';
 
 !function() {
 	'use strict';
-
+	
 	const Notes = [];
 	const Polyfill = {
 		addClass(classes) {
@@ -32,6 +32,9 @@ import * as is from '../../utilities/is/index.js';
 		clear() {
 			this.innerHTML = '';
 			return this;
+		},
+		clone(deep = false){
+			return this.cloneNode(deep);
 		},
 		css(styles, value) {
 			if(is.obj(styles)) {
@@ -90,6 +93,13 @@ import * as is from '../../utilities/is/index.js';
 			}, options);
 			return this;
 		},
+		parent(depth = 1){
+			let parent = this;
+			for(let x = 0; x < depth; x++){
+				parent = parent.parentNode;
+			}
+			return parent;
+		},
 		removeAttr(attributes) {
 			let attributeArray = attributes.split(' ');
 			for(let attributeName of attributeArray) {
@@ -106,6 +116,20 @@ import * as is from '../../utilities/is/index.js';
 		},
 		show(display = 'inherit') {
 			this.style.display = display;
+			return this;
+		},
+		shadow(options){
+			return this.attachShadow(options);
+		},
+		toggleClass(class1, class2){
+			let cache = this.hasClass(class1) ? class2 : class1;
+			this.removeClass(`${class1} ${class2}`);
+			this.addClass(cache);
+			return this;
+		},
+		toggleText(text1, text2){
+			let cache = this.html().includes(text1) ? text2 : text1;
+			this.html(cache);
 			return this;
 		},
 		trigger(eventName, custom = false, obj) {
