@@ -5,8 +5,9 @@ import $ from './modules/utilities/dom/index.js';
 import './modules/components/s-form/index.js';
 import './modules/components/theme-toggler/index.js';
 import tabbedContent from './modules/plugins/tabbedContent/index.js';
-console.log(document.styleSheets[0]);
-document.styleSheets[0].disabled = true;
+
+//console.log(document.styleSheets[0]);
+//document.styleSheets[0].disabled = true;
 /*console.log(document.styleSheets);
 console.log(document.styleSheets[0].cssRules[0].style.cssText);
 let a = document.styleSheets[0].cssRules[0].style.cssText
